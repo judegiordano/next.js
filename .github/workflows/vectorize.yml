@@ -21,7 +21,7 @@ jobs:
         id: vectorize
         uses: judegiordano/vectorize-action@main
         with:
-          exclude: 'github/workspace/.git/,github/workspace/.fastembed_cache/,github/workspace/test/development/app-dir/ssr-in-rsc/node_modules/random-react-library,.png,.ico,.jpg,.webp'
+          exclude: 'github/workspace/.git/,github/workspace/.fastembed_cache/,random-react-library,.png,.ico,.jpg,.webp'
 
       - name: log data_path
         run: echo "copy from ${{ steps.vectorize.outputs.data_path }}"
