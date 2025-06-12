@@ -1,0 +1,37 @@
+name: Vectorize
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - canary
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  vectorize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pguyot/arm-runner-action@v2
+
+      - name: test action
+        id: vectorize
+        uses: judegiordano/vectorize-action@main
+        with:
+          exclude: 'github/workspace/.git/,github/workspace/.fastembed_cache/'
+
+      - name: log data_path
+        run: echo "copy from ${{ steps.vectorize.outputs.data_path }}"
+
+      - name: upload data artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: upload-artifact
+          path: ${{ steps.vectorize.outputs.data_path }}/*.db
+          retention-days: 1
+          include-hidden-files: true
+          overwrite: true
+          if-no-files-found: error
