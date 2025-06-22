@@ -19,7 +19,7 @@ jobs:
 
       - name: test action
         id: vectorize
-        uses: judegiordano/vectorize-action@main
+        uses: judegiordano/vectorize-action@testing
         with:
           exclude: 'github/workspace/.git/,github/workspace/.fastembed_cache/,.png,.ico,.jpg,.webp'
 
