@@ -21,6 +21,8 @@ jobs:
       - name: test action
         id: vectorize
         uses: judegiordano/bun-vector/actions/vectorize@main
+        with:
+          include: "**/*.md"
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
@@ -31,7 +33,3 @@ jobs:
           include-hidden-files: true
           overwrite: true
           if-no-files-found: error
-
-    env:
-      EXCLUDE: "node_modules"
-      INCLUDE: "**/*.md"
