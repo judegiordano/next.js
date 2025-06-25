@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: upload-artifact
-          path: .data/*.json
+          path: ./actions/vectorize/.data/*.json
           retention-days: 1
           include-hidden-files: true
           overwrite: true
