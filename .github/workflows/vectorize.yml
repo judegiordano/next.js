@@ -17,9 +17,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
 
-      - name: test action
+      - name: vectorize project
         id: vectorize
-        uses: judegiordano/bun-vector/actions/vectorize@main
+        uses: judegiordano/reusable-workflows/vectorize-codebase@main
         with:
           include: "**/*.md"
 
