@@ -15,22 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pguyot/arm-runner-action@v2
-      - uses: oven-sh/setup-bun@v1
+      # - uses: pguyot/arm-runner-action@v2
+      # - uses: oven-sh/setup-bun@v1
 
       - name: test action
         id: vectorize
-        uses: judegiordano/bun-vector/actions/vectorize@main
-
-      - name: upload data artifact
-        uses: actions/upload-artifact@v4
+        uses: judegiordano/bun-reusable-workflow@v4
         with:
-          name: upload-artifact
-          path: ./.vector_data/*.json
-          retention-days: 1
-          include-hidden-files: true
-          overwrite: true
-          if-no-files-found: error
+          example-input: "my custom input"
 
     env:
       EXCLUDE: "node_modules"
