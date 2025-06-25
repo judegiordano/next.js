@@ -16,22 +16,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pguyot/arm-runner-action@v2
+      - uses: oven-sh/setup-bun@v1
 
       - name: test action
         id: vectorize
-        uses: judegiordano/vectorize-action@main
-        with:
-          exclude: 'github/workspace/.git/,github/workspace/.fastembed_cache/,.png,.ico,.jpg,.webp'
-
-      - name: log data_path
-        run: echo "copy from ${{ steps.vectorize.outputs.data_path }}"
+        uses: judegiordano/bun-vector@main
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
         with:
           name: upload-artifact
-          path: ${{ steps.vectorize.outputs.data_path }}/*.db
+          path: .data/*.json
           retention-days: 1
           include-hidden-files: true
           overwrite: true
           if-no-files-found: error
+
+    env:
+      EXCLUDE: "node_modules"
+      INCLUDE: "**/*.md"
