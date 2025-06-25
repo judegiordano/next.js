@@ -20,7 +20,7 @@ jobs:
 
       - name: test action
         id: vectorize
-        uses: judegiordano/bun-vector@main
+        uses: judegiordano/bun-vector/actions/vectorize@main
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
