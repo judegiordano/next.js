@@ -20,7 +20,7 @@ jobs:
 
       - name: test action
         id: vectorize
-        uses: judegiordano/bun-reusable-workflow@v4
+        uses: judegiordano/bun-reusable-workflow@v5
         with:
           example-input: "my custom input"
 
