@@ -21,13 +21,13 @@ jobs:
         id: vectorize
         uses: judegiordano/reusable-workflows/vectorize-codebase@main
         with:
-          include: "**/*.md"
+          include: "**/*.md,**/*.yml"
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
         with:
           name: upload-artifact
-          path: ./.vector_data/*.json
+          path: ./${{ github.sha }}.sqlite
           retention-days: 1
           include-hidden-files: true
           overwrite: true
