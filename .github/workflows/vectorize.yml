@@ -27,8 +27,8 @@ jobs:
         id: vectorize
         uses: judegiordano/reusable-workflows/vectorize-codebase@main
         with:
-          include-pattern: ${{ github.event.inputs.include }}
-          exclude-pattern: ${{ github.event.inputs.exclude }}
+          include: ${{ github.event.inputs.include }}
+          exclude: ${{ github.event.inputs.exclude }}
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
