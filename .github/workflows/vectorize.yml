@@ -2,9 +2,15 @@ name: Vectorize
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - canary
+    inputs:
+      include:
+        description: "Globs to include"
+        required: false
+        default: "**/*.md,**/*.yml"
+      exclude:
+        description: "Globs to exclude"
+        required: false
+        default: ""
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +27,8 @@ jobs:
         id: vectorize
         uses: judegiordano/reusable-workflows/vectorize-codebase@main
         with:
-          include: "**/*.md,**/*.yml"
+          include: ${{ github.event.inputs.include }}
+          exclude: ${{ github.event.inputs.exclude }}
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
