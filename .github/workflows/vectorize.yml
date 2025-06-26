@@ -20,8 +20,6 @@ jobs:
       - name: vectorize project
         id: vectorize
         uses: judegiordano/reusable-workflows/vectorize-codebase@main
-        with:
-          include: "**/*"
 
       - name: upload data artifact
         uses: actions/upload-artifact@v4
