@@ -6,11 +6,11 @@ on:
       include:
         description: 'Globs to include'
         required: false
-        default: '**/*.md,**/*.yml'
+        default: '**/*.ts,**/*.js,**/*.rs,**/*.go,**/*.tsx,**/*.jsx'
       exclude:
         description: 'Globs to exclude'
         required: false
-        default: '**/*node_modules/**/*'
+        default: ''
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
